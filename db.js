@@ -8,7 +8,7 @@ const serviceAccount = require("./permissions.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL:
-    "https://kmitl-alert-default-rtdb.asia-southeast1.firebasedatabase.app"
+    "https://kmitl-alert-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
 
 const db = admin;

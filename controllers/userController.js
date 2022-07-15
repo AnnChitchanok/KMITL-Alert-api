@@ -34,7 +34,7 @@ const getUsers = async (req, res, next) => {
 const getUser = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const users = await firestore.collection("users").doc();
+    const users = await firestore.collection("users").doc(id);
     const data = await users.get();
     res.send(data.data());
   } catch (err) {
@@ -45,14 +45,9 @@ const getUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(id);
-    const res  = await firestore.collection("users").doc(id).get();
-    console.log(res);
-    console.log(req.body);
     const users = await firestore.collection("users").doc(id).update(req.body);
     res.send("Record saved successfuly");
   } catch (err) {
-    console.log(err);
     res.status(400).send(err.message);
   }
 };
